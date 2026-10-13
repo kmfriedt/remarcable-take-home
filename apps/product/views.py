@@ -29,3 +29,13 @@ def product_list(request: HttpRequest) -> HttpResponse:
 
     products = products.distinct()
 
+    context = {
+        "products": products,
+        "categories": Category.objects.all(),
+        "tags": Tag.objects.all(),
+        "search": search,
+        "selected_category": category,
+        "selected_tags": tags,
+    }
+
+    return render(request, "product_list.html", context)

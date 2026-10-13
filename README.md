@@ -20,7 +20,11 @@ Take home assignment for Remarcable
 ### Install
 
 ### Seed Database
-
+- run the following to setup a superuser
+- `python manage.py createsuperuser`
+- `username: remarcable`
+- `email: kfriedt@gmail.com`
+- `password: remarcable`
 
 ## Run
 

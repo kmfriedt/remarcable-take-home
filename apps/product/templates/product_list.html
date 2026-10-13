@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .filters {
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Products</h1>
+
+    <section class="filters">
+
+        <form method="get">
+
+            <div>
+                <label for="search">Search</label>
+
+                <input
+                    type="text"
+                    id="search"
+                    name="search"
+                    value="{{ search }}"
+                    placeholder="Search products..."
+                >
+            </div>
+
+            <div>
+                <label for="category">Category</label>
+
+                <select id="category" name="category">
+
+                    <option value="">All categories</option>
+
+                    {% for category in categories %}
+                        <option
+                            value="{{ category.id }}"
+                            {% if selected_category == category.id|stringformat:"s" %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ category.name|capfirst }}
+                        </option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <fieldset>
+                <legend>Tags</legend>
+
+                {% for tag in tags %}
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="tags"
+                            value="{{ tag.id }}"
+                            {% if tag.id|stringformat:"s" in selected_tags %}
+                                checked
+                            {% endif %}
+                        >
+
+                        {{ tag.name|capfirst }}
+                    </label>
+                {% endfor %}
+
+            </fieldset>
+            <button type="submit">Search</button>
+
+            <a href="{% url 'product-list' %}">
+                Clear filters
+            </a>
+
+        </form>
+
+    </section>
+
+
+    <section class="products">
+
+        {% for product in products %}
+
+            <article class="product">
+
+                <h2>{{ product.name }}</h2>
+
+                <p>
+                    {{ product.description }}
+                </p>
+
+                <p>
+                    <strong>Category:</strong>
+                    {{ product.category.name|capfirst }}
+                </p>
+
+                <p>
+                    <strong>Price:</strong>
+                    {{ product.price }}
+                </p>
+
+                <div class="tags">
+
+                    {% for tag in product.tags.all %}
+                        <span class="tag">
+                            {{ tag.name|capfirst }}
+                        </span>
+                    {% endfor %}
+
+                </div>
+
+            </article>
+
+        {% empty %}
+
+            <p>No products found.</p>
+
+        {% endfor %}
+
+    </section>
+
+</body>
+</html>

@@ -11,7 +11,7 @@ from apps.tag.models import Tag
 @require_GET
 def product_list(request: HttpRequest) -> HttpResponse:
     products = Product.objects.select_related("category").prefetch_related("tags")
-    search = request.GET.get("search", "") # have to set html to be search
+    search = request.GET.get("search", "")
     category = request.GET.get("category", "")
     tags = request.GET.getlist("tags", "")
 
@@ -21,11 +21,11 @@ def product_list(request: HttpRequest) -> HttpResponse:
             Q(name__icontains=search) | Q(description__icontains=search)
         )
     if category:
-        products = products.filter(category=category)
+        products = products.filter(category_id=category)
 
     if tags:
         for tag in tags:
-            products = products.filter(tags=tag)
+            products = products.filter(tags__id=tag)
 
     products = products.distinct()
 

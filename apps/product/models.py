@@ -2,10 +2,16 @@ from django.db import models
 from apps.category.models import Category
 from apps.tag.models import Tag
 
+from djmoney.models.fields import MoneyField
+
 class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = MoneyField(
+        max_digits=10,
+        decimal_places=2,
+        default_currency="CAD",
+    )
 
     category = models.ForeignKey(
         Category,

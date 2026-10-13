@@ -41,6 +41,9 @@
             padding: 4px 8px;
             border-radius: 4px;
         }
+        .filter-section {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -52,7 +55,7 @@
 
         <form method="get">
 
-            <div>
+            <div class="filter-section">
                 <label for="search">Search</label>
 
                 <input
@@ -64,7 +67,7 @@
                 >
             </div>
 
-            <div>
+            <div class="filter-section">
                 <label for="category">Category</label>
 
                 <select id="category" name="category">
@@ -85,25 +88,28 @@
                 </select>
             </div>
 
-            <fieldset>
-                <legend>Tags</legend>
+            <div class="filter-section">
+                <fieldset>
+                    <legend>Tags</legend>
 
-                {% for tag in tags %}
-                    <label>
-                        <input
-                            type="checkbox"
-                            name="tags"
-                            value="{{ tag.id }}"
-                            {% if tag.id|stringformat:"s" in selected_tags %}
-                                checked
-                            {% endif %}
-                        >
+                    {% for tag in tags %}
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="tags"
+                                value="{{ tag.id }}"
+                                {% if tag.id|stringformat:"s" in selected_tags %}
+                                    checked
+                                {% endif %}
+                            >
 
-                        {{ tag.name|capfirst }}
-                    </label>
-                {% endfor %}
+                            {{ tag.name|capfirst }}
+                        </label>
+                    {% endfor %}
 
-            </fieldset>
+                </fieldset>
+            </div>
+
             <button type="submit">Search</button>
 
             <a href="{% url 'product-list' %}">

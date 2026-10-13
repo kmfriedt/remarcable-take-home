@@ -1,30 +1,54 @@
 # remarcable-take-home
-Take home assignment for Remarcable
+Take home assignment for Remarcable by Kyle Friedt
 
 ## Requirements
 - Python3.14
 - pip
 - django
-- 
-## Setup
-- migrate to directory
-- create virtual environment
-  `python3.14 -m venv .venv`
-- activate virtual environment
-- Mac/Linux
-  `source .venv/bin/activate`
-- Windows
-  `.venv\Scripts\activate`
-- install dependencies
-  `pip install -r requirements.txt
-### Install
+- bable
+- django money
+- moneyed
+
+
+## Setup Environment
+Migrate to directory
+```
+  cd remarcable-take-home
+```
+Create virtual environment
+```
+python3.14 -m venv .venv
+```
+Activate virtual environment
+  - Mac/Linux
+```
+source .venv/bin/activate 
+```
+  - Windows
+```
+.venv\Scripts\activate
+```
+Install dependencies
+```
+pip install -r requirements.txt
+```
+
+### Setup the App
+Run migrations
+```
+python manage.py migrate
+```
 
 ### Seed Database
-- run the following to setup a superuser
-- `python manage.py createsuperuser`
-- `username: remarcable`
-- `email: kfriedt@gmail.com`
-- `password: remarcable`
+Run the following to set up a superuser
+```
+  python manage.py createsuperuser
+  username: remarcable
+  email: kfriedt@gmail.com
+  password: remarcable
+```  
+
+
 
 ## Run
 

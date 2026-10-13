@@ -113,7 +113,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+CURRENCY_CHOICES = [
+    ("CAD", "Canadian Dollar"),
+    ("USD", "US Dollar"),
+]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 

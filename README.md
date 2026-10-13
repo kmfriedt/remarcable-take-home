@@ -4,10 +4,6 @@ Take home assignment for Remarcable by Kyle Friedt
 ## Requirements
 - Python3.14
 - pip
-- django
-- bable
-- django money
-- moneyed
 
 
 ## Setup Environment
@@ -15,6 +11,18 @@ Migrate to directory
 ```
   cd remarcable-take-home
 ```
+Install Python 3.14 Mac/Linux
+```
+brew install python@3.14
+```
+Install Python 3.14 Windows
+- Navigate to https://www.python.org/downloads/windows/
+- Download and install the .exe for your system
+- Check python version in PowerShell
+```
+python --version
+```
+
 Create virtual environment
 ```
 python3.14 -m venv .venv
@@ -26,8 +34,14 @@ source .venv/bin/activate
 ```
   - Windows
 ```
-.venv\Scripts\activate
+.venv\Scripts\activate.ps1
 ```
+
+Upgrade pip
+```
+python -m pip install --upgrade pip
+```
+
 Install dependencies
 ```
 pip install -r requirements.txt
@@ -43,10 +57,11 @@ python manage.py migrate
 Run the following to set up a superuser
 ```
   python manage.py createsuperuser
-  username: remarcable
-  email: kfriedt@gmail.com
-  password: remarcable
 ```
+- username: remarcable
+- email: kfriedt@gmail.com
+- password: remarcable123
+
 
 Seed the database with example data
 ```
@@ -59,7 +74,7 @@ Start the server
 python manage.py runserver
 ```
 
-Navigate to admin and sign in 
+Navigate to admin and sign in to view Products, Categories, and Tags.
 ```
 localhost:8000/admin
 ```

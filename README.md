@@ -47,6 +47,12 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
+## Database
+
+This project uses SQLite, no separate database server is required.
+Running `python manage.py migrate` will create the database.
+
+
 ## Setup the App
 Run migrations
 ```

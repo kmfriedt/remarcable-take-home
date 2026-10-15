@@ -11,7 +11,7 @@ from apps.product.tests.factories import create_product
 
 class ProductAdminTest(TestCase):
     @classmethod
-    def setUpTestData(cls):
+    def setUpTestData(cls) -> None:
         cls.tag = Tag.objects.create(name="copper")
 
         cls.product = create_product()
@@ -21,12 +21,12 @@ class ProductAdminTest(TestCase):
             username="admin",
             password="password123",
         )
-    def test_product_admin_page_loads(self):
+    def test_product_admin_page_loads(self) -> None:
         self.client.force_login(self.admin_user)
 
         url = reverse("admin:product_product_changelist")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
-    def test_product_admin_is_registered(self):
+    def test_product_admin_is_registered(self) -> None:
         self.assertIn(Product, admin.site._registry)

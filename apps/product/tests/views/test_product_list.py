@@ -9,7 +9,7 @@ from apps.product.tests.factories import create_default_tags
 
 class ProductListViewTest(TestCase):
     @classmethod
-    def setUpTestData(cls):
+    def setUpTestData(cls)-> None:
 
         cls.copper_product = create_product()
         # create copper, indoor, outdoor tags
@@ -36,12 +36,12 @@ class ProductListViewTest(TestCase):
         # add indoor tag second in list
         cls.elec_box_product.tags.add(cls.tags[1])
 
-    def test_product_list_loads(self):
+    def test_product_list_loads(self) -> None:
         url = reverse("product-list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
-    def test_returns_all_products_without_filters(self):
+    def test_returns_all_products_without_filters(self) -> None:
         url = reverse("product-list")
         response = self.client.get(url)
         self.assertQuerySetEqual(
@@ -50,7 +50,7 @@ class ProductListViewTest(TestCase):
             ordered=False,
         )
 
-    def test_search_matches_product_name(self):
+    def test_search_matches_product_name(self) -> None:
         url = reverse("product-list")
 
         response = self.client.get(
@@ -64,7 +64,7 @@ class ProductListViewTest(TestCase):
         self.assertNotIn(self.aluminum_product, products)
         self.assertNotIn(self.elec_box_product, products)
 
-    def test_search_matches_product_description(self):
+    def test_search_matches_product_description(self) -> None:
         url = reverse("product-list")
         response = self.client.get(
             url,
@@ -73,7 +73,7 @@ class ProductListViewTest(TestCase):
         products = response.context["products"]
         self.assertIn(self.copper_product, products)
 
-    def test_search_is_case_insensitive(self):
+    def test_search_is_case_insensitive(self) -> None:
         url = reverse("product-list")
 
         response = self.client.get(
@@ -91,7 +91,7 @@ class ProductListViewTest(TestCase):
             response.context["products"]
         )
 
-    def test_filter_by_category(self):
+    def test_filter_by_category(self) -> None:
         url = reverse("product-list")
         response = self.client.get(
             url,
@@ -104,7 +104,7 @@ class ProductListViewTest(TestCase):
         self.assertNotIn(self.copper_product, products)
         self.assertNotIn(self.aluminum_product, products)
 
-    def test_filter_by_tag(self):
+    def test_filter_by_tag(self) -> None:
         url = reverse("product-list")
         copper_tag = self.tags[0]
         response = self.client.get(
@@ -118,7 +118,7 @@ class ProductListViewTest(TestCase):
         self.assertNotIn(self.aluminum_product, products)
         self.assertNotIn(self.elec_box_product, products)
 
-    def test_filter_by_multiple_tags_uses_and_behavior(self):
+    def test_filter_by_multiple_tags_uses_and_behavior(self) -> None:
         url = reverse("product-list")
         copper_tag = self.tags[0]
         indoor_tag = self.tags[1]

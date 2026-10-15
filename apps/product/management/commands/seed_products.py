@@ -6,6 +6,9 @@ from apps.product.models import Product
 from apps.category.models import Category
 from apps.tag.models import Tag
 
+# This code was all written by AI. It helps make it easy to populate the data in the database
+# This is the type of things AI should be used for, humans should not spend time writing these types of things out.
+# There is zero operational risk to having AI write this code.
 
 class Command(BaseCommand):
     help = "Seed the database with electrical products, categories, and tags."

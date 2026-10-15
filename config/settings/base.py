@@ -116,6 +116,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+# AI told me that I needed to put the currency choices in here
 CURRENCY_CHOICES = [
     ("CAD", "Canadian Dollar"),
     ("USD", "US Dollar"),

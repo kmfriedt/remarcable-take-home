@@ -11,6 +11,7 @@ DATABASES = {
     }
 }
 
+# AI told me what to put in here to include the debug toolbar
 INSTALLED_APPS += [
     'debug_toolbar',
 ]

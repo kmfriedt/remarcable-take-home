@@ -101,7 +101,8 @@ Run tests for the product admin page and the product search page with
 python manage.py test apps.product.tests
 ```
 
-# Changes Required to use in Production
+# Changes Required to use in Production 
+## This is not an exhaustive list just a list of all the things I thought of while building this.
 ### Build
 Application Server Builds
 - I would deploy Django using a production-grade application server such as Gunicorn. 

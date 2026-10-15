@@ -94,3 +94,12 @@ Use the search page
 - Search is used to look through description and name
 - Choose a Category
 - Choose any number of Tags
+
+## Testing
+Run tests for the product admin page and the product search page with
+```
+python manage.py test apps.product.tests
+```
+
+# Changes Required to use in Production
+I will fill this section out after submission

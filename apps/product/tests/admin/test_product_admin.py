@@ -5,22 +5,16 @@ from django.test import TestCase
 from django.urls import reverse
 
 from apps.product.models import Product
-from apps.category.models import Category
 from apps.tag.models import Tag
 
+from apps.product.tests.factories import create_product
 
 class ProductAdminTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.category = Category.objects.create(name="wire & cable")
         cls.tag = Tag.objects.create(name="copper")
 
-        cls.product = Product.objects.create(
-            name="12 AWG THHN Copper Wire",
-            description="Copper wire for electrical installations.",
-            price="89.99",
-            category=cls.category,
-        )
+        cls.product = create_product()
         cls.product.tags.add(cls.tag)
 
         cls.admin_user = User.objects.create_superuser(

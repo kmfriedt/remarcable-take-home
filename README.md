@@ -1,6 +1,13 @@
 # remarcable-take-home
 Take home assignment for Remarcable by Kyle Friedt
 
+## AI use Notes
+All help from AI is in its own commit and has "Asked AI" in the commit message and includes what was asked.
+I did use AI to generate the HTML for the template page. HTML is cumbersome to write and I do not do it very often.
+My view is that writing raw HTML is something that should be done with assistance of AI coding agents, especially for 
+something with this level of complexity. 
+
+
 ## Requirements
 - Python3.14
 - pip
